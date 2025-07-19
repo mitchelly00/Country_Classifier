@@ -5,7 +5,6 @@ import soundfile as sf
 import openl3
 import numpy as np
 import pandas as pd
-from multiprocessing import Pool
 from tqdm import tqdm
 import kapre
 from kapre.time_frequency import STFT
@@ -65,17 +64,6 @@ def extract_openl3_embedding_from_s3(key: str, model=None) -> np.ndarray:
 
     return embedding_vector
 
-
-def _init_pool(m):
-    global model
-    import openl3
-
-    model = openl3.models.load_audio_embedding_model(
-        input_repr="mel256",
-        content_type="music",
-        embedding_size=512
-    )
-
 # Example usage
 if __name__ == "__main__":
     # Pull file from s3
@@ -103,27 +91,14 @@ if __name__ == "__main__":
 
     df["Embedding"] = embeddings
 
-
-
-
-
-    # #Using Pool for Parrallel jobs
-    # with Pool(processes=4, initializer=_init_pool, initargs=(model,)) as pool:
-    #     keys = df["Key"].tolist()
-    #     embeddings = list(tqdm(pool.imap(extract_row_embedding, keys), total = len(keys), desc = "Extracting Embeddings"))
-
-    # df["Embedding"] = embeddings
-
-    #saving df
-
     file_path = './combined_tables_with_embedding.pkl'
     df.to_pickle(file_path)
 
 
     #added to S3
-    # object_name = 'combined_tables_with_embedding.pkl'  # S3 
-    # s3.upload_file(file_path,'ucwdc-country-classifier', object_name)
-    # print("Exported to S3")
+    object_name = 'combined_tables_with_embedding.pkl'  # S3 
+    s3.upload_file(file_path,'ucwdc-country-classifier', object_name)
+    print("Exported to S3")
    
 
     
