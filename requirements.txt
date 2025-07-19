@@ -1,0 +1,9 @@
+boto3
+soundfile
+openl3
+numpy
+pandas
+tqdm
+kapre
+# tensorflow
+# keras
