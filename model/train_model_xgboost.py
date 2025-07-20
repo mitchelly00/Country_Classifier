@@ -33,6 +33,7 @@ clf = xgb.XGBClassifier(
     n_estimators=100,
     max_depth=6,
     learning_rate=0.1,
+    early_stopping_rounds=10,
     verbosity=1
 )
 
@@ -41,7 +42,7 @@ print(type(clf))
 clf.fit(
     X_train, y_train_enc,
     eval_set=[(X_val, y_val_enc)],
-    early_stopping_rounds=10,
+    
     verbose=True
 )
 
