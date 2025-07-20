@@ -3,6 +3,7 @@ import xgboost as xgb; print(xgb.__version__)
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
 import pandas as pd
+import lightgbm as lgb
 
 train_df = pd.read_pickle("./data_splits/train.pkl")
 val_df = pd.read_pickle("./data_splits/val.pkl")
@@ -10,13 +11,13 @@ test_df = pd.read_pickle("./data_splits/test.pkl")
 
 
 # Extract features and labels
-X_train = train_df["Feature"].tolist()
+X_train = train_df["Embedding"].tolist()
 y_train = train_df["Dance"]
 
-X_val = val_df["Feature"].tolist()
+X_val = val_df["Embedding"].tolist()
 y_val = val_df["Dance"]
 
-X_test = test_df["Feature"].tolist()
+X_test = test_df["Embedding"].tolist()
 y_test = test_df["Dance"]
 
 # Encode labels
@@ -51,7 +52,5 @@ from sklearn.metrics import classification_report
 y_pred = clf.predict(X_test)
 print(classification_report(y_test_enc, y_pred, target_names=label_encoder.classes_))
 
-import matplotlib.pyplot as plt
-xgb.plot_importance(clf, max_num_features=10)
-plt.show()
+
 
