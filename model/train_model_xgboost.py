@@ -1,5 +1,5 @@
 import pickle
-import xgboost as xgb
+import xgboost as xgb; print(xgb.__version__)
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
 import pandas as pd
@@ -35,6 +35,8 @@ clf = xgb.XGBClassifier(
     learning_rate=0.1,
     verbosity=1
 )
+
+print(type(clf))
 
 clf.fit(
     X_train, y_train_enc,
