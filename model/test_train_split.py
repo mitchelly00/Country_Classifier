@@ -1,6 +1,8 @@
 # spliting data 
 import pandas as pd
 from sklearn.model_selection import train_test_split
+import os
+import boto3
 
 df = pd.read_pickle('tables_with_fixed_features.pkl')
 
@@ -39,15 +41,30 @@ print("\nTest:")
 print(test_df['Dance'].value_counts())
 
 #saving it all
-file_path = 'tables_with_fixed_features.pkl'
+# Create local directory if it doesn't exist
+local_dir = "./data_splits"
 
-# Save as pickle
-df.to_pickle(file_path)
+# File names
+file_map = {
+    "train.pkl": train_df,
+    "val.pkl": val_df,
+    "test.pkl": test_df,
+}
 
+# Save locally
+for filename, df in file_map.items():
+    path = os.path.join(local_dir, filename)
+    df.to_pickle(filename)
+    print(f"Saved {filename} locally.")
 
-# #upload to S3
-s3 = boto3.client('s3')
+# S3 upload
+bucket = "ucwdc_country_classifier"
+s3_prefix = "data_splits/"
+s3 = boto3.client("s3")
 
-s3.upload_file(file_path, 'ucwdc-country-classifier', file_path)
-print("Exported to S3")
+for filename in file_map:
+    local_path = os.path.join(local_dir, filename)
+    s3_key = s3_prefix + filename
+    s3.upload_file(local_path, bucket, s3_key)
+    print(f"Uploaded {filename} to s3://{bucket}/{s3_key}")
 
