@@ -1,3 +1,5 @@
+# this file tries to use parralle processing but it does not 
+
 import boto3
 import io
 import subprocess
