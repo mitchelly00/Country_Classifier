@@ -9,15 +9,13 @@ import numpy as np
 train_df = pd.read_pickle("./data_splits/train2.pkl")
 test_df = pd.read_pickle("./data_splits/test2.pkl")
 # And your features and label columns:
-feature_cols = "Embedding"  # list your handcrafted + embedding feature columns here
+feature_cols = "Combined"  # list your handcrafted + embedding feature columns here
 label_col = 'Dance'
 
 # Prepare data
 X_train = np.vstack(train_df[feature_cols].values)
 y_train = train_df[label_col].values
 
-X_val = np.vstack(val_df[feature_cols].values)
-y_val = val_df[label_col].values
 
 X_test = np.vstack(test_df[feature_cols].values)
 y_test = test_df[label_col].values
@@ -25,12 +23,10 @@ y_test = test_df[label_col].values
 # Encode labels to integers for LightGBM
 le = LabelEncoder()
 y_train_enc = le.fit_transform(y_train)
-y_val_enc = le.transform(y_val)
 y_test_enc = le.transform(y_test)
 
 # Create LightGBM datasets
 train_data = lgb.Dataset(X_train, label=y_train_enc)
-val_data = lgb.Dataset(X_val, label=y_val_enc, reference=train_data)
 
 # Parameters (you can tune these)
 params = {
@@ -46,12 +42,7 @@ params = {
 bst = lgb.train(
     params,
     train_data,
-    num_boost_round=200,
-    valid_sets=[train_data, val_data],
-    valid_names=['train', 'valid'],
-    callbacks=[
-        early_stopping(stopping_rounds=10),
-        log_evaluation(period=10)]
+    num_boost_round=100,
 )
 
 # Predict on test set
