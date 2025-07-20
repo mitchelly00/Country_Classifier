@@ -1,10 +1,14 @@
 import lightgbm as lgb
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
+import pandas as pd
 
 # Assume you have your dataframes: train_df, val_df, test_df
+train_df = pd.read_pickle("./data_splits/train.pkl")
+val_df = pd.read_pickle("./data_splits/val.pkl")
+test_df = pd.read_pickle("./data_splits/test.pkl")
 # And your features and label columns:
-feature_cols = [...]  # list your handcrafted + embedding feature columns here
+feature_cols = "Feature"  # list your handcrafted + embedding feature columns here
 label_col = 'Dance'
 
 # Prepare data
