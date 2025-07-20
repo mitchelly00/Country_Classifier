@@ -37,3 +37,17 @@ print("\nValidation:")
 print(val_df['Dance'].value_counts())
 print("\nTest:")
 print(test_df['Dance'].value_counts())
+
+#saving it all
+file_path = 'tables_with_fixed_features.pkl'
+
+# Save as pickle
+df.to_pickle(file_path)
+
+
+# #upload to S3
+s3 = boto3.client('s3')
+
+s3.upload_file(file_path, 'ucwdc-country-classifier', file_path)
+print("Exported to S3")
+

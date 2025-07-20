@@ -1,5 +1,5 @@
-import numpy as np; print(np.__version__)
-import pandas as pd; print(pd.__version__)
+import numpy as np
+import pandas as pd
 import boto3
 import io
 
