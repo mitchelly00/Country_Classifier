@@ -18,3 +18,21 @@ WTZ    16
 NC2    15
 PLK    15
 ECS    13
+
+Logistic combined
+
+              precision    recall  f1-score   support
+
+         2ST       0.74      0.64      0.68        22
+         CHA       0.46      0.57      0.51        23
+         ECS       0.67      0.62      0.64        13
+         NC2       0.62      0.53      0.57        15
+         PLK       0.65      0.87      0.74        15
+         TR2       0.56      0.45      0.50        20
+         WCS       0.84      0.81      0.82        26
+         WTZ       0.71      0.75      0.73        16
+
+    accuracy                           0.65       150
+   macro avg       0.66      0.65      0.65       150
+weighted avg       0.66      0.65      0.65       150
+

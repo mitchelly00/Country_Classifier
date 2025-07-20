@@ -29,7 +29,7 @@ clf = xgb.XGBClassifier(
     n_estimators=100,
     max_depth=6,
     learning_rate=0.1,
-    early_stopping_rounds=10,
+    #early_stopping_rounds=10,
     verbosity=1
 )
 
