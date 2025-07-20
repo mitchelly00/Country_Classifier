@@ -58,7 +58,7 @@ for filename, df in file_map.items():
     print(f"Saved {filename} locally.")
 
 # S3 upload
-bucket = "ucwdc_country_classifier"
+bucket = "ucwdc-country-classifier" 
 s3_prefix = "data_splits/"
 s3 = boto3.client("s3")
 
