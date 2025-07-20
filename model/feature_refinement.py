@@ -18,20 +18,20 @@ print(len(df))
 print(df['Feature'].head())
 
 
-# # Convert stringified lists back to real Python lists
-# df['Feature'] = df['Feature'].apply(lambda x: np.fromstring(x.strip("[]"), sep=' '))
+# Convert stringified lists back to real Python lists
+df['Feature'] = df['Feature'].apply(lambda x: np.fromstring(x.strip("[]"), sep=' '))
 
-# # Convert to numpy arrays
-# print(type(df['Feature'].iloc[0,]))
+# Convert to numpy arrays
+print(type(df['Feature'].iloc[0,]))
 
-# file_path = 'tables_with_fixed_features.pkl'
+file_path = 'tables_with_fixed_features.pkl'
 
-# # Save as pickle
-# df.to_pickle(file_path)
+# Save as pickle
+df.to_pickle(file_path)
 
 
-# # #upload to S3
-# s3 = boto3.client('s3')
+# #upload to S3
+s3 = boto3.client('s3')
 
-# s3.upload_file(file_path, 'ucwdc-country-classifier', file_path)
-# print("Exported to S3")
+s3.upload_file(file_path, 'ucwdc-country-classifier', file_path)
+print("Exported to S3")
