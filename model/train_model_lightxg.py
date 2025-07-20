@@ -3,6 +3,7 @@ from lightgbm import early_stopping, log_evaluation
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
+import numpy as np
 
 # Assume you have your dataframes: train_df, val_df, test_df
 train_df = pd.read_pickle("./data_splits/train.pkl")
@@ -13,13 +14,13 @@ feature_cols = "Feature"  # list your handcrafted + embedding feature columns he
 label_col = 'Dance'
 
 # Prepare data
-X_train = train_df[feature_cols].values
+X_train = np.vstack(train_df[feature_cols].values)
 y_train = train_df[label_col].values
 
-X_val = val_df[feature_cols].values
+X_val = np.vstack(val_df[feature_cols].values)
 y_val = val_df[label_col].values
 
-X_test = test_df[feature_cols].values
+X_test = np.vstack(test_df[feature_cols].values)
 y_test = test_df[label_col].values
 
 # Encode labels to integers for LightGBM
