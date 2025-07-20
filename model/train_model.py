@@ -8,9 +8,9 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 
 # Convert list embeddings to array
-X_train = np.vstack(train_df['Features'].values)
-X_val = np.vstack(val_df['Features'].values)
-X_test = np.vstack(test_df['Features'].values)
+X_train = np.vstack(train_df['Feature'].values)
+X_val = np.vstack(val_df['Feature'].values)
+X_test = np.vstack(test_df['Feature'].values)
 
 # Encode string labels into numbers
 label_encoder = LabelEncoder()
