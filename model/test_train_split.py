@@ -54,7 +54,7 @@ file_map = {
 # Save locally
 for filename, df in file_map.items():
     path = os.path.join(local_dir, filename)
-    df.to_pickle(filename)
+    df.to_pickle(path)
     print(f"Saved {filename} locally.")
 
 # S3 upload
