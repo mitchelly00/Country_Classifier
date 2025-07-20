@@ -1,0 +1,20 @@
+Train2:
+WCS    101
+CHA     93
+2ST     85
+TR2     82
+WTZ     64
+NC2     62
+PLK     59
+ECS     53
+
+Test2:
+Dance
+WCS    26
+CHA    23
+2ST    22
+TR2    20
+WTZ    16
+NC2    15
+PLK    15
+ECS    13
