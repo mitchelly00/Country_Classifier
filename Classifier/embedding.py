@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
     obj = s3.get_object(Bucket='ucwdc-country-classifier', Key=key)
     df = pd.read_csv(io.BytesIO(obj['Body'].read()))
-    df = df.head(1).copy()
+    df = df.head(5).copy()
 
     # Load model once for multiple calls if needed
     model = openl3.models.load_audio_embedding_model(input_repr="mel256",

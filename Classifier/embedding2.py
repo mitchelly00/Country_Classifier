@@ -68,7 +68,7 @@ if __name__ == "__main__":
     key = 'combined_tables_with_features_id.csv'
     obj = s3.get_object(Bucket='ucwdc-country-classifier', Key=key)
     df = pd.read_csv(io.BytesIO(obj['Body'].read()))
-    df = df.head(1).copy()  # TEMP: You can remove or adjust this
+    df = df.head(5).copy()  # TEMP: You can remove or adjust this
 
     keys = df["Key"].tolist()
 
