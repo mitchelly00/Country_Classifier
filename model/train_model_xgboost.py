@@ -5,7 +5,7 @@ from sklearn.metrics import classification_report
 import pandas as pd
 
 train_df = pd.read_pickle("./data_splits/train.pkl")
-val_df = pd.read_pickle("./data_splits/eval.pkl")
+val_df = pd.read_pickle("./data_splits/val.pkl")
 test_df = pd.read_pickle("./data_splits/test.pkl")
 
 
