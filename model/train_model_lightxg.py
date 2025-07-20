@@ -6,9 +6,8 @@ import pandas as pd
 import numpy as np
 
 # Assume you have your dataframes: train_df, val_df, test_df
-train_df = pd.read_pickle("./data_splits/train.pkl")
-val_df = pd.read_pickle("./data_splits/val.pkl")
-test_df = pd.read_pickle("./data_splits/test.pkl")
+train_df = pd.read_pickle("./data_splits/train2.pkl")
+test_df = pd.read_pickle("./data_splits/test2.pkl")
 # And your features and label columns:
 feature_cols = "Embedding"  # list your handcrafted + embedding feature columns here
 label_col = 'Dance'
