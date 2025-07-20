@@ -3,7 +3,6 @@ import xgboost as xgb; print(xgb.__version__)
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
 import pandas as pd
-import lightgbm as lgb
 
 train_df = pd.read_pickle("./data_splits/train.pkl")
 val_df = pd.read_pickle("./data_splits/val.pkl")
