@@ -10,7 +10,7 @@ train_df = pd.read_pickle("./data_splits/train.pkl")
 val_df = pd.read_pickle("./data_splits/val.pkl")
 test_df = pd.read_pickle("./data_splits/test.pkl")
 # And your features and label columns:
-feature_cols = "Feature"  # list your handcrafted + embedding feature columns here
+feature_cols = "Embedding"  # list your handcrafted + embedding feature columns here
 label_col = 'Dance'
 
 # Prepare data
