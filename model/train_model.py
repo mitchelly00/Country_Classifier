@@ -1,8 +1,8 @@
 import pandas as pd
 
-train_df = pd.read_pickle('./data_splits/train.pkl')
-val_df = pd.read_pickle('./data_splits/eval.pkl')
-test_df = pd.read_pickle('./data_splits/test.pkl')
+train_df = pd.read_pickle('data_splits/train.pkl')
+val_df = pd.read_pickle('data_splits/eval.pkl')
+test_df = pd.read_pickle('data_splits/test.pkl')
 
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
