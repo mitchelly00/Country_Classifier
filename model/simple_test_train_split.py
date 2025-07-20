@@ -4,10 +4,12 @@ from sklearn.model_selection import train_test_split
 import os
 import boto3
 
-df = pd.read_pickle('tables_with_fixed_features.pkl')
+df = pd.read_pickle('tables_with_combined_features.pkl')
 
 print(len(df))
 print(df['Feature'].head())
+
+print(df.columns)
 
 
 # Step 2: Split into train and temp (val + test), stratified
