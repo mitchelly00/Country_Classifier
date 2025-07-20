@@ -1,4 +1,5 @@
 import lightgbm as lgb
+from lightgbm import early_stopping, log_evaluation
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
 import pandas as pd
@@ -48,8 +49,9 @@ bst = lgb.train(
     num_boost_round=200,
     valid_sets=[train_data, val_data],
     valid_names=['train', 'valid'],
-    early_stopping_rounds=10,
-    verbose_eval=10,
+    callbacks=[
+        early_stopping(stopping_rounds=10),
+        log_evaluation(period=10)]
 )
 
 # Predict on test set
