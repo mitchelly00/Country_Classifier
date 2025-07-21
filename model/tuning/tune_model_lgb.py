@@ -49,6 +49,9 @@ df_test = pd.read_pickle("./data_splits/test.pkl")
 label_encoder = LabelEncoder()
 label_encoder.fit(df_train["Dance"].tolist() + df_val["Dance"].tolist() + df_test["Dance"].tolist())
 
+# Define number of classes for LightGBM
+num_classes = len(label_encoder.classes_)
+
 # Transform the labels
 y_train = label_encoder.transform(df_train["Dance"].values)
 y_val = label_encoder.transform(df_val["Dance"].values)
