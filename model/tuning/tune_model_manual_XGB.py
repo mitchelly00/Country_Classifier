@@ -5,9 +5,9 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import ParameterSampler
 
 # Load preprocessed data
-df_train = pd.read_pickle("train.pkl")
-df_val = pd.read_pickle("val.pkl")
-df_test = pd.read_pickle("test.pkl")
+df_train = pd.read_pickle("./data_splits/train.pkl")
+df_val = pd.read_pickle("./data_splits/val.pkl")
+df_test = pd.read_pickle("./data_splits/test.pkl")
 
 # Use vector column "Combined" for features
 X_train = np.stack(df_train["Combined"].values).astype(np.float32)
