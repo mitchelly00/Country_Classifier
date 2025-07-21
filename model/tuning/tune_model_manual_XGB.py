@@ -3,21 +3,32 @@ import numpy as np
 import xgboost as xgb
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import ParameterSampler
+from sklearn.preprocessing import LabelEncoder
+
+
 
 # Load preprocessed data
 df_train = pd.read_pickle("./data_splits/train.pkl")
 df_val = pd.read_pickle("./data_splits/val.pkl")
 df_test = pd.read_pickle("./data_splits/test.pkl")
 
+# Initialize and fit on all labels to ensure consistent encoding
+label_encoder = LabelEncoder()
+label_encoder.fit(df_train["Dance"].tolist() + df_val["Dance"].tolist() + df_test["Dance"].tolist())
+
+# Transform the labels
+y_train = label_encoder.transform(df_train["Dance"].values)
+y_val = label_encoder.transform(df_val["Dance"].values)
+y_test = label_encoder.transform(df_test["Dance"].values)
+
+
 # Use vector column "Combined" for features
 X_train = np.stack(df_train["Combined"].values).astype(np.float32)
-y_train = df_train["Dance"].values
 
 X_val = np.stack(df_val["Combined"].values).astype(np.float32)
-y_val = df_val["Dance"].values
 
 X_test = np.stack(df_test["Combined"].values).astype(np.float32)
-y_test = df_test["Dance"].values
+
 
 # Define hyperparameter space
 param_dist = {
