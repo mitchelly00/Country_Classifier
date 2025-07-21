@@ -25,6 +25,8 @@ def objective(trial):
     lgb_train = lgb.Dataset(X_train, label=y_train)
     lgb_val = lgb.Dataset(X_val, label=y_val, reference=lgb_train)
     
+
+
     gbm = lgb.train(
         param, 
         lgb_train, 
@@ -32,9 +34,7 @@ def objective(trial):
         valid_names=['train', 'val'],
         num_boost_round=1000,
         callbacks=[
-            lgb.early_stopping(stopping_rounds=3),
-        ],
-        verbose_eval=False
+        lgb.early_stopping(stopping_rounds=3),]
     )
     
     preds = gbm.predict(X_val, num_iteration=gbm.best_iteration)
