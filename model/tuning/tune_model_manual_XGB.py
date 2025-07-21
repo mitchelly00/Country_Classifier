@@ -12,6 +12,10 @@ df_train = pd.read_pickle("./data_splits/train.pkl")
 df_val = pd.read_pickle("./data_splits/val.pkl")
 df_test = pd.read_pickle("./data_splits/test.pkl")
 
+
+# Combine train + val for later use
+df_train_val = pd.concat([df_train, df_val], ignore_index=True)
+
 # Initialize and fit on all labels to ensure consistent encoding
 label_encoder = LabelEncoder()
 label_encoder.fit(df_train["Dance"].tolist() + df_val["Dance"].tolist() + df_test["Dance"].tolist())
