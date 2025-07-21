@@ -31,7 +31,9 @@ def objective(trial):
         valid_sets=[lgb_train, lgb_val],
         valid_names=['train', 'val'],
         num_boost_round=1000,
-        early_stopping_rounds=20,
+        callbacks=[
+            lgb.early_stopping(stopping_rounds=3),
+        ]
         verbose_eval=False
     )
     
