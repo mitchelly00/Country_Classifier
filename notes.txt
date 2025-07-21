@@ -120,3 +120,11 @@ Classification Report:
     accuracy                           0.63       113
    macro avg       0.62      0.63      0.61       113
 weighted avg       0.63      0.63      0.62       113
+
+Manual hyperparameter tuning for XGboost
+
+✅ Best hyperparameters found:
+{'subsample': 0.6, 'reg_lambda': 1, 'reg_alpha': 0.1, 'n_estimators': 200, 'max_depth': 9, 'learning_rate': 0.1, 'colsample_bytree': 0.8}     
+Best validation accuracy: 0.8393
+
+🧪 Test Accuracy: 0.7965

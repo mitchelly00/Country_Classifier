@@ -66,11 +66,22 @@ for i, params in enumerate(param_list):
         best_params = params
         best_model = model
 
+# ✅ Retrain final model on full train + val set with best params
+X_train_val = np.stack(df_train_val["Combined"].values).astype(np.float32)
+y_train_val = label_encoder.transform(df_train_val["Dance"].values)
+
+final_model = xgb.XGBClassifier(
+    use_label_encoder=False,
+    eval_metric='mlogloss',
+    **best_params
+)
+final_model.fit(X_train_val, y_train_val)
+
+# 🧪 Final test evaluation
+test_preds = final_model.predict(X_test)
+test_acc = accuracy_score(y_test, test_preds)
+
 print("\n✅ Best hyperparameters found:")
 print(best_params)
-print(f"Best validation accuracy: {best_score:.4f}")
-
-# Final test performance
-test_preds = best_model.predict(X_test)
-test_acc = accuracy_score(y_test, test_preds)
-print(f"\n🧪 Test Accuracy: {test_acc:.4f}")
+print(f"Best validation accuracy during tuning: {best_score:.4f}")
+print(f"🧪 Final test accuracy: {test_acc:.4f}")
