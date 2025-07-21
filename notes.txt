@@ -128,3 +128,10 @@ Manual hyperparameter tuning for XGboost
 Best validation accuracy: 0.8393
 
 🧪 Test Accuracy: 0.7965
+
+Manual hyperparameter for XGboost + train on validate
+
+✅ Best hyperparameters found:
+{'subsample': 0.6, 'reg_lambda': 1, 'reg_alpha': 0.1, 'n_estimators': 200, 'max_depth': 9, 'learning_rate': 0.1, 'colsample_bytree': 0.8}     
+Best validation accuracy during tuning: 0.8393
+🧪 Final test accuracy: 0.8407
