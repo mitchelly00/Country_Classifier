@@ -29,6 +29,7 @@ def objective(trial):
         param, 
         lgb_train, 
         valid_sets=[lgb_train, lgb_val],
+        valid_names=['train', 'val'],
         num_boost_round=1000,
         early_stopping_rounds=20,
         verbose_eval=False
