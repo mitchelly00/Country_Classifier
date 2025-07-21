@@ -41,6 +41,10 @@ def objective(trial):
     pred_labels = preds.argmax(axis=1)
     
     accuracy = accuracy_score(y_val, pred_labels)
+
+    # Store best_iteration as user_attr so we can access it later
+    trial.set_user_attr("best_iteration", gbm.best_iteration)
+
     return accuracy
 
 # Load preprocessed data
@@ -70,3 +74,4 @@ study.optimize(objective, n_trials=50)
 
 print('Best trial:', study.best_trial.params)
 print('Best accuracy:', study.best_trial.value)
+print('📊 Best boosting round (best_iteration):', study.best_trial.user_attrs["best_iteration"])
