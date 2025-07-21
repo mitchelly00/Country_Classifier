@@ -33,7 +33,7 @@ def objective(trial):
         num_boost_round=1000,
         callbacks=[
             lgb.early_stopping(stopping_rounds=3),
-        ]
+        ],
         verbose_eval=False
     )
     
