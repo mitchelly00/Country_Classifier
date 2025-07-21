@@ -68,3 +68,20 @@ Lightxboost combined
     accuracy                           0.77       150
    macro avg       0.79      0.77      0.77       150
 weighted avg       0.79      0.77      0.77       150
+
+Radom cut forrest
+
+              precision    recall  f1-score   support
+
+         2ST       0.84      0.73      0.78        22
+         CHA       0.48      0.52      0.50        23
+         ECS       0.73      0.62      0.67        13
+         NC2       0.78      0.47      0.58        15
+         PLK       0.69      0.73      0.71        15
+         TR2       0.74      0.70      0.72        20
+         WCS       0.66      0.81      0.72        26
+         WTZ       0.68      0.81      0.74        16
+
+    accuracy                           0.68       150
+   macro avg       0.70      0.67      0.68       150
+weighted avg       0.69      0.68      0.68       150
