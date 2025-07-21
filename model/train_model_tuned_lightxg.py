@@ -26,30 +26,30 @@ y_test = label_encoder.transform(df_test["Dance"].values)
 X_train_val = np.stack(df_train_val["Combined"].values).astype(np.float32)
 X_test = np.stack(df_test["Combined"].values).astype(np.float32)
 
-# Define parameters from best trial
+# Define best trial parameters
 params = {
     'objective': 'multiclass',
     'metric': 'multi_logloss',
     'num_class': num_classes,
-    'learning_rate': 0.2142407590040286,
-    'num_leaves': 124,
-    'max_depth': 14,
-    'min_child_samples': 15,
-    'subsample': 0.997518914220819,
-    'colsample_bytree': 0.7145002583288589,
-    'reg_alpha': 0.51397955058898,
-    'reg_lambda': 2.8529458079534944,
+    'learning_rate': 0.024721654545255774,
+    'num_leaves': 106,
+    'max_depth': 8,
+    'min_child_samples': 13,
+    'subsample': 0.7177646518647348,
+    'colsample_bytree': 0.9386036286584165,
+    'reg_alpha': 0.5453364531992095,
+    'reg_lambda': 3.5926846115843007,
     'verbose': -1,
 }
 
 # Create dataset for training (no validation here)
 train_data = lgb.Dataset(X_train_val, label=y_train_val)
 
-# Train model on combined train + val data
+# Train model on combined train + val data using best boosting round
 bst = lgb.train(
     params,
     train_data,
-    num_boost_round=1000,  # Or set a number you want
+    num_boost_round=376,  # ← Best iteration from Optuna trial
     verbose_eval=10
 )
 
