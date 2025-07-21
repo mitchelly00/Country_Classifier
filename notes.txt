@@ -135,3 +135,9 @@ Manual hyperparameter for XGboost + train on validate
 {'subsample': 0.6, 'reg_lambda': 1, 'reg_alpha': 0.1, 'n_estimators': 200, 'max_depth': 9, 'learning_rate': 0.1, 'colsample_bytree': 0.8}     
 Best validation accuracy during tuning: 0.8393
 🧪 Final test accuracy: 0.8407
+
+
+Best parameters with Lightxboost
+
+Best trial: {'learning_rate': 0.2142407590040286, 'num_leaves': 124, 'max_depth': 14, 'min_child_samples': 15, 'subsample': 0.997518914220819, 'colsample_bytree': 0.7145002583288589, 'reg_alpha': 0.51397955058898, 'reg_lambda': 2.8529458079534944}
+Best accuracy: 0.8392857142857143
