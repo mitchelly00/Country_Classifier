@@ -49,8 +49,8 @@ train_data = lgb.Dataset(X_train_val, label=y_train_val)
 bst = lgb.train(
     params,
     train_data,
-    num_boost_round=376,  # ← Best iteration from Optuna trial
-    verbose_eval=10
+    num_boost_round=376  # ← Best iteration from Optuna trial
+    #verbose_eval=10
 )
 
 # Predict on test data
