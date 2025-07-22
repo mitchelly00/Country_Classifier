@@ -97,6 +97,6 @@ final_model.save_model(file_path)
 
 s3 = boto3.client('s3')
 
-s3.upload_file(file_path,'ucwdc-country-classifier', "/final_models/xgboost_model.json")
+s3.upload_file(file_path,'ucwdc-country-classifier', "final_models/xgboost_model.json")
 
 print("saved to s3")
