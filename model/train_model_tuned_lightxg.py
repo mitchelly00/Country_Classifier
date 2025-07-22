@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import classification_report
+import boto3
 
 # Load data
 df_train = pd.read_pickle("./data_splits/train.pkl")
@@ -59,3 +60,11 @@ y_pred = y_pred_proba.argmax(axis=1)
 
 # Print classification report on test set
 print(classification_report(y_test, y_pred, target_names=label_encoder.classes_))
+
+#Saving model
+file_path = "./final_models/lightgbm_model.txt"
+bst.save_model(file_path)
+
+s3 = boto3.client('s3')
+
+s3.upload_file(file_path,'ucwdc-country-classifier', "/final_models/lightgbm_model.txt")

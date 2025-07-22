@@ -4,6 +4,7 @@ import xgboost as xgb
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import ParameterSampler
 from sklearn.preprocessing import LabelEncoder
+import boto3
 
 
 
@@ -89,3 +90,11 @@ print("\n✅ Best hyperparameters found:")
 print(best_params)
 print(f"Best validation accuracy during tuning: {best_score:.4f}")
 print(f"🧪 Final test accuracy: {test_acc:.4f}")
+
+#Saving model
+file_path = "./final_models/xgboost_model.json"
+final_model.save_model(file_path)
+
+s3 = boto3.client('s3')
+
+s3.upload_file(file_path,'ucwdc-country-classifier', "/final_models/xgboost_model.json")

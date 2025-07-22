@@ -139,5 +139,23 @@ Best validation accuracy during tuning: 0.8393
 
 Best parameters with Lightxboost
 
-Best trial: {'learning_rate': 0.2142407590040286, 'num_leaves': 124, 'max_depth': 14, 'min_child_samples': 15, 'subsample': 0.997518914220819, 'colsample_bytree': 0.7145002583288589, 'reg_alpha': 0.51397955058898, 'reg_lambda': 2.8529458079534944}
-Best accuracy: 0.8392857142857143
+Best trial: {'learning_rate': 0.024721654545255774, 'num_leaves': 106, 'max_depth': 8, 'min_child_samples': 13, 'subsample': 0.7177646518647348, 'colsample_bytree': 0.9386036286584165, 'reg_alpha': 0.5453364531992095, 'reg_lambda': 3.5926846115843007}
+Best accuracy: 0.8482142857142857
+📊 Best boosting round (best_iteration): 376
+
+lgb with best parameters 
+
+              precision    recall  f1-score   support
+
+         2ST       0.79      0.94      0.86        16
+         CHA       0.76      0.72      0.74        18
+         ECS       0.90      0.90      0.90        10
+         NC2       0.80      0.73      0.76        11
+         PLK       0.67      0.91      0.77        11
+         TR2       0.92      0.75      0.83        16
+         WCS       0.88      0.74      0.80        19
+         WTZ       0.77      0.83      0.80        12
+
+    accuracy                           0.81       113
+   macro avg       0.81      0.81      0.81       113
+weighted avg       0.82      0.81      0.81       113
